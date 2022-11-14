@@ -10,13 +10,13 @@ import Foundation
 class AlarmService: Service {
     let title: String
     let time: (Int, Int) //hh: mm
-    private var days: [Int] = []
+    private var days: Set<Int> = []
 
     var id: String {
         return UUID().uuidString
     }
 
-    init(title: String, time: (Int, Int), onDays days: [Int]) {
+    init(title: String, time: (Int, Int), onDays days: Set<Int>) {
         self.title = title
         self.time = time
         self.days = days
@@ -26,7 +26,7 @@ class AlarmService: Service {
         print("calendar: \(time)")
     }
 
-    func repetition() -> [Int] {
+    func repetition() -> Set<Int> {
         return days
     }
 }

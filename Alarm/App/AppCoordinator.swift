@@ -9,11 +9,12 @@ import Foundation
 import UIKit
 
 class AppCoordinator: Coordinator {
-    var parent: Coordinator?
-    var children: [Coordinator]
-
     private var root: UITabBarController
     private var scheduler: ServiceScheduler
+    private let main = UIStoryboard(name: "Main", bundle: nil)
+
+    var parent: Coordinator?
+    var children: [Coordinator]
 
     init(root: UITabBarController, scheduler: ServiceScheduler) {
         self.root = root

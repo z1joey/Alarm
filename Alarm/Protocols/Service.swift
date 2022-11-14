@@ -18,7 +18,7 @@ protocol Service {
 
     /// In which day should the service work
     /// - Returns: 1-7: Monday-Sunday
-    func repetition() -> [Int]
+    func repetition() -> Set<Int>
 }
 
 extension Service {

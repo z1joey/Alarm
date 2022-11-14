@@ -77,11 +77,12 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="I4F-Vf-q9R">
                                                 <rect key="frame" x="81.333333333333343" y="0.0" width="271.66666666666663" height="20"/>
                                                 <subviews>
-                                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="right" contentVerticalAlignment="center" placeholder="Once" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="K8d-Ot-d1c">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Once" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q5U-by-SRp">
                                                         <rect key="frame" x="0.0" y="0.0" width="271.66666666666669" height="20"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits"/>
-                                                    </textField>
+                                                        <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fR5-6j-ywq">
                                                         <rect key="frame" x="0.0" y="0.0" width="271.66666666666669" height="20"/>
                                                         <buttonConfiguration key="configuration" style="plain"/>
@@ -92,15 +93,15 @@
                                                 </subviews>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="20" id="2hA-2S-SEU"/>
-                                                    <constraint firstItem="K8d-Ot-d1c" firstAttribute="top" secondItem="I4F-Vf-q9R" secondAttribute="top" id="9nC-Rq-EgU"/>
-                                                    <constraint firstAttribute="bottom" secondItem="K8d-Ot-d1c" secondAttribute="bottom" id="RhA-IG-E4M"/>
+                                                    <constraint firstItem="Q5U-by-SRp" firstAttribute="top" secondItem="I4F-Vf-q9R" secondAttribute="top" id="IoT-fr-zwM"/>
+                                                    <constraint firstAttribute="height" constant="20" id="JRD-o4-h4A"/>
+                                                    <constraint firstAttribute="bottom" secondItem="Q5U-by-SRp" secondAttribute="bottom" id="RGm-0W-Ef5"/>
                                                     <constraint firstAttribute="trailing" secondItem="fR5-6j-ywq" secondAttribute="trailing" id="S60-d9-wEB"/>
-                                                    <constraint firstItem="K8d-Ot-d1c" firstAttribute="leading" secondItem="I4F-Vf-q9R" secondAttribute="leading" id="X0N-R3-Zed"/>
+                                                    <constraint firstItem="Q5U-by-SRp" firstAttribute="leading" secondItem="I4F-Vf-q9R" secondAttribute="leading" id="awz-fb-ylv"/>
                                                     <constraint firstItem="fR5-6j-ywq" firstAttribute="leading" secondItem="I4F-Vf-q9R" secondAttribute="leading" id="chB-Ih-3hu"/>
                                                     <constraint firstAttribute="bottom" secondItem="fR5-6j-ywq" secondAttribute="bottom" id="gkJ-Eo-QMl"/>
+                                                    <constraint firstAttribute="trailing" secondItem="Q5U-by-SRp" secondAttribute="trailing" id="riO-gk-exR"/>
                                                     <constraint firstItem="fR5-6j-ywq" firstAttribute="top" secondItem="I4F-Vf-q9R" secondAttribute="top" id="tkG-WR-Gy2"/>
-                                                    <constraint firstAttribute="trailing" secondItem="K8d-Ot-d1c" secondAttribute="trailing" id="wH6-zo-beu"/>
                                                 </constraints>
                                             </view>
                                         </subviews>
@@ -129,6 +130,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="daysLabel" destination="Q5U-by-SRp" id="KmB-61-K2h"/>
                         <outlet property="timePicker" destination="blQ-xT-rdi" id="JVD-cE-f9S"/>
                         <outlet property="titleTextField" destination="C82-HU-iLB" id="PHp-2r-ar2"/>
                     </connections>

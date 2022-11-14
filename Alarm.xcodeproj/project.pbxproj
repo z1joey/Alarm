@@ -24,6 +24,7 @@
 		D421667829226BC80092E497 /* RepetitionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D421667729226BC80092E497 /* RepetitionViewController.swift */; };
 		D436321B2922877B00E51711 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = D436321A2922877B00E51711 /* README.md */; };
 		D436321D2922939600E51711 /* AlarmCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D436321C2922939600E51711 /* AlarmCoordinator.swift */; };
+		D436321F2922A56D00E51711 /* Date+.swift in Sources */ = {isa = PBXBuildFile; fileRef = D436321E2922A56D00E51711 /* Date+.swift */; };
 		D4E66B072921C6FE00DF86BB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4E66B062921C6FE00DF86BB /* AppDelegate.swift */; };
 		D4E66B0E2921C6FE00DF86BB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D4E66B0C2921C6FE00DF86BB /* Main.storyboard */; };
 		D4E66B102921C70000DF86BB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D4E66B0F2921C70000DF86BB /* Assets.xcassets */; };
@@ -70,6 +71,7 @@
 		D421667729226BC80092E497 /* RepetitionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepetitionViewController.swift; sourceTree = "<group>"; };
 		D436321A2922877B00E51711 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		D436321C2922939600E51711 /* AlarmCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmCoordinator.swift; sourceTree = "<group>"; };
+		D436321E2922A56D00E51711 /* Date+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+.swift"; sourceTree = "<group>"; };
 		D4E66B032921C6FE00DF86BB /* Alarm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Alarm.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4E66B062921C6FE00DF86BB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D4E66B0D2921C6FE00DF86BB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -155,12 +157,13 @@
 			path = App;
 			sourceTree = "<group>";
 		};
-		D40A2F962921E8EE00E81130 /* Utility */ = {
+		D40A2F962921E8EE00E81130 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
 				D40A2F972921E8FE00E81130 /* Reusable.swift */,
+				D436321E2922A56D00E51711 /* Date+.swift */,
 			);
-			path = Utility;
+			path = Extension;
 			sourceTree = "<group>";
 		};
 		D40A2F992921ED8F00E81130 /* Views */ = {
@@ -198,7 +201,7 @@
 			isa = PBXGroup;
 			children = (
 				D40A2F932921E71B00E81130 /* App */,
-				D40A2F962921E8EE00E81130 /* Utility */,
+				D40A2F962921E8EE00E81130 /* Extension */,
 				D40A2F802921D94200E81130 /* Protocols */,
 				D40A2F872921DA2000E81130 /* Services */,
 				D40A2F8E2921E13300E81130 /* Controllers */,
@@ -363,6 +366,7 @@
 				D40A2F922921E6E200E81130 /* Coordinator.swift in Sources */,
 				D40A2FA52921FE2800E81130 /* TabBarController.swift in Sources */,
 				D4E66B392921C84800DF86BB /* AlarmViewController.swift in Sources */,
+				D436321F2922A56D00E51711 /* Date+.swift in Sources */,
 				D40A2F9B2921EDB500E81130 /* AlarmTableViewCell.swift in Sources */,
 				D40A2F892921DA4B00E81130 /* AlarmService.swift in Sources */,
 				D40A2F952921E73800E81130 /* AppCoordinator.swift in Sources */,

@@ -23,8 +23,6 @@ class AlarmViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         assert(scheduler != nil && coordinator != nil)
-
-        NotificationService.shared.request()
     }
 
     override func viewWillAppear(_ animated: Bool) {

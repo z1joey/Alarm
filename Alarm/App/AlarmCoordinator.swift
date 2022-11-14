@@ -9,11 +9,12 @@ import Foundation
 import UIKit
 
 class AlarmCoordinator: Coordinator {
-    var parent: Coordinator?
-    var children: [Coordinator]
-
+    private let main = UIStoryboard(name: "Main", bundle: nil)
     private var nav: UINavigationController
     private var scheduler: ServiceScheduler
+
+    var parent: Coordinator?
+    var children: [Coordinator]
 
     init(nav: UINavigationController, scheduler: ServiceScheduler) {
         self.nav = nav
@@ -31,7 +32,6 @@ class AlarmCoordinator: Coordinator {
     }
 
     func showAlarmVC() {
-        let main = UIStoryboard(name: "Main", bundle: nil)
         let alarmVC: AlarmViewController = main.instantiateViewController()
         alarmVC.scheduler = scheduler
         alarmVC.coordinator = self
@@ -39,18 +39,17 @@ class AlarmCoordinator: Coordinator {
     }
 
     func showAddAlarmVC() {
-        let main = UIStoryboard(name: "Main", bundle: nil)
         let vc: AddAlarmViewController = main.instantiateViewController()
         vc.coordinator = self
         vc.scheduler = scheduler
         nav.pushViewController(vc, animated: true)
     }
 
-    func showRepetitionVC() {
-        let main = UIStoryboard(name: "Main", bundle: nil)
+    func showRepetitionVC(_ completion: ((Set<Int>) -> Void)?) {
         let vc: RepetitionViewController = main.instantiateViewController()
         vc.coordinator = self
         vc.scheduler = scheduler
+        vc.onDays = completion
         nav.pushViewController(vc, animated: true)
     }
 }

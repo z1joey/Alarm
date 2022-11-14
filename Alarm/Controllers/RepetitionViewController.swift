@@ -11,6 +11,9 @@ class RepetitionViewController: UITableViewController {
     weak var coordinator : AlarmCoordinator!
     var scheduler: ServiceScheduler!
 
+    private var days: Set<Int> = []
+    var onDays: ((Set<Int>) -> Void)?
+
     override func viewDidLoad() {
         super.viewDidLoad()
         assert(scheduler != nil && coordinator != nil)
@@ -24,11 +27,12 @@ class RepetitionViewController: UITableViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         navigationController?.setNavigationBarHidden(true, animated: false)
+        onDays?(days)
     }
 }
 
 extension RepetitionViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print(indexPath.row + 1)
+        days.insert(indexPath.row + 1)
     }
 }

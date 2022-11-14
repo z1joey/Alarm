@@ -8,7 +8,7 @@
 import Foundation
 
 class TimerService: Service {
-    func repetition() -> [Int] {
+    func repetition() -> Set<Int> {
         return []
     }
     
