@@ -8,8 +8,8 @@
 import Foundation
 
 extension Date {
-    /// Get hours and minutes from a date
-    /// - Returns: (Hours: Minutes: Seconds)
+    /// Get hours, minutes and seconds from a date
+    /// - Returns: (hours, minutes, seconds)
     func getHMS() -> (Int, Int, Int) {
         let calendar = Calendar.current
         let hour = calendar.component(.hour, from: self)
@@ -32,8 +32,7 @@ extension TimeInterval {
 }
 
 extension Int {
-    /// Convert number to weekday description, if it is not valid weekday number, then return "Once"
-    /// - Returns: e.g. "Monday", "Sunday"
+    /// Convert number to weekday name, if it is not valid weekday number, then return "Once"
     func weekdayName() -> String {
         switch self {
         case 1: return "Monday"

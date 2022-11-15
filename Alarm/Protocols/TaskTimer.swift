@@ -10,6 +10,6 @@ import Foundation
 protocol TaskTimer {
     func start()
     func stop()
-    func pause()
+
     func onTick(action: @escaping (Int) -> ())
 }

@@ -36,6 +36,7 @@ class RealTaskScheduler: TaskScheduler, Logger {
         log("terminated: \(task)")
     }
 
+    /// Disable notification and update isEnabled property
     func disableNotification(_ task: Task) {
         notificationService.disableNotification(task: task)
         var temp = task
@@ -43,6 +44,7 @@ class RealTaskScheduler: TaskScheduler, Logger {
         addTask(temp)
     }
 
+    /// Enable notification and update isEnabled property
     func enableNotification(_ task: Task) {
         notificationService.enableNotification(task: task)
         var temp = task
