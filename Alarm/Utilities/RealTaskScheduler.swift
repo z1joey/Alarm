@@ -22,12 +22,14 @@ class RealTaskScheduler: TaskScheduler, Logger {
         return Array(_tasks)
     }
 
+    /// enable notification and store the task to UserDefaults
     func execute(_ task: Task) {
         addTask(task)
         notificationService.enableNotification(task: task)
         log("executed: \(task)")
     }
 
+    /// disable notification and remove it from UserDefaults
     func terminate(_ task: Task) {
         removeTask(task)
         notificationService.disableNotification(task: task)

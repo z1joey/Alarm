@@ -25,6 +25,7 @@
 		D4363227292381F400E51711 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4363226292381F400E51711 /* Logger.swift */; };
 		D43632292923A6BB00E51711 /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D43632282923A6BB00E51711 /* NotificationService.swift */; };
 		D436322B2923C14D00E51711 /* UserDefaultService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D436322A2923C14D00E51711 /* UserDefaultService.swift */; };
+		D436322D2923FEA600E51711 /* TimerButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D436322C2923FEA600E51711 /* TimerButton.swift */; };
 		D4E66B072921C6FE00DF86BB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4E66B062921C6FE00DF86BB /* AppDelegate.swift */; };
 		D4E66B0E2921C6FE00DF86BB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D4E66B0C2921C6FE00DF86BB /* Main.storyboard */; };
 		D4E66B102921C70000DF86BB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D4E66B0F2921C70000DF86BB /* Assets.xcassets */; };
@@ -72,6 +73,7 @@
 		D4363226292381F400E51711 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		D43632282923A6BB00E51711 /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
 		D436322A2923C14D00E51711 /* UserDefaultService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultService.swift; sourceTree = "<group>"; };
+		D436322C2923FEA600E51711 /* TimerButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerButton.swift; sourceTree = "<group>"; };
 		D4E66B032921C6FE00DF86BB /* Alarm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Alarm.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4E66B062921C6FE00DF86BB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D4E66B0D2921C6FE00DF86BB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -172,6 +174,7 @@
 				D4E66B0C2921C6FE00DF86BB /* Main.storyboard */,
 				D4E66B112921C70000DF86BB /* LaunchScreen.storyboard */,
 				D40A2F9A2921EDB500E81130 /* AlarmTableViewCell.swift */,
+				D436322C2923FEA600E51711 /* TimerButton.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -379,6 +382,7 @@
 				D4363223292337F800E51711 /* RealTaskTimer.swift in Sources */,
 				D40A2F8D2921DDF400E81130 /* RealTaskScheduler.swift in Sources */,
 				D43632292923A6BB00E51711 /* NotificationService.swift in Sources */,
+				D436322D2923FEA600E51711 /* TimerButton.swift in Sources */,
 				D40A2F822921D95600E81130 /* Task.swift in Sources */,
 				D421667829226BC80092E497 /* RepetitionViewController.swift in Sources */,
 			);

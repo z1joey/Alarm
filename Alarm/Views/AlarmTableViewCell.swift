@@ -15,17 +15,17 @@ class AlarmTableViewCell: UITableViewCell {
 
     var switchToogled: ((Bool) -> Void)?
 
-    func setCell(alarm: RealTask) {
-        let (h, m, _) = Date(timeIntervalSince1970: alarm.timestamp).getHMS()
-        let weekdays = alarm.weekDays.isEmpty ? "Once" : Array(alarm.weekDays)
+    func setCell(task: Task) {
+        let (h, m, _) = Date(timeIntervalSince1970: task.timestamp).getHMS()
+        let weekdays = task.weekDays.isEmpty ? "Once" : Array(task.weekDays)
             .sorted()
             .map { $0.weekdayName() }
             .joined(separator: " ")
 
         timeLabel.text = "\(h) : \(m)"
-        titleLabel.text = alarm.title
+        titleLabel.text = task.title
         weekdayLabel.text = weekdays
-        alarmSwitch.isOn = alarm.isEnabled
+        alarmSwitch.isOn = task.isEnabled
     }
 
     @IBAction private func switchToogled(_ sender: UISwitch) {

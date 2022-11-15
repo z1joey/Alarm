@@ -13,8 +13,8 @@ class AlarmViewController: UIViewController {
     weak var coordinator : AppCoordinator!
     var scheduler: TaskScheduler!
 
-    private var alarms: [RealTask] {
-        return scheduler.tasks.compactMap { $0 as? RealTask }
+    private var alarmTasks: [Task] {
+        return scheduler.tasks.filter { $0.type == .alarm }
     }
 
     override func viewDidLoad() {
@@ -40,18 +40,18 @@ class AlarmViewController: UIViewController {
 
 extension AlarmViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return alarms.count
+        return alarmTasks.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: AlarmTableViewCell = tableView.dequeueReusableCell(at: indexPath)
-        cell.setCell(alarm: alarms[indexPath.row])
+        cell.setCell(task: alarmTasks[indexPath.row])
         cell.switchToogled = { [unowned self] isOn in
             let scheduler = scheduler as? RealTaskScheduler
             if isOn {
-                scheduler?.enableNotification(alarms[indexPath.row])
+                scheduler?.enableNotification(alarmTasks[indexPath.row])
             } else {
-                scheduler?.disableNotification(alarms[indexPath.row])
+                scheduler?.disableNotification(alarmTasks[indexPath.row])
             }
         }
 
@@ -66,7 +66,7 @@ extension AlarmViewController: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            scheduler.terminate(alarms[indexPath.row])
+            scheduler.terminate(alarmTasks[indexPath.row])
             tableView.reloadSections(IndexSet(integer: 0), with: .automatic)
         }
     }

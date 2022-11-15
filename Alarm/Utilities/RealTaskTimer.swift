@@ -38,6 +38,10 @@ class RealTaskTimer: TaskTimer, Logger {
         tick = 0
     }
 
+    func pause() {
+        timer?.invalidate()
+    }
+
     func onTick(action: @escaping (Int) -> ()) {
         tickAction = action
     }

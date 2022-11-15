@@ -22,17 +22,13 @@ class NotificationService: Logger {
         let center = UNUserNotificationCenter.current()
 
         center.getPendingNotificationRequests { [weak self] (requests) in
-            for request in requests {
-                if task.weekDays.isEmpty {
-                    if request.identifier == task.id {
-                        center.removePendingNotificationRequests(withIdentifiers: [task.id])
-                        self?.log("removed a local notification without weekdays")
-                    }
-                } else {
-                    let ids = task.weekDays.map { task.id + "-weekday\($0)" }
-                    center.removePendingNotificationRequests(withIdentifiers: ids)
-                    self?.log("removed a local notification with weekdays: \(task.weekDays)")
-                }
+            if task.weekDays.isEmpty {
+                center.removePendingNotificationRequests(withIdentifiers: [task.id])
+                self?.log("removed a local notification without weekdays")
+            } else {
+                let ids = task.weekDays.map { task.id + "-weekday\($0)" }
+                center.removePendingNotificationRequests(withIdentifiers: ids)
+                self?.log("removed a local notification with weekdays: \(task.weekDays)")
             }
         }
     }

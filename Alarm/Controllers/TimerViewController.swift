@@ -10,7 +10,10 @@ import UIKit
 class TimerViewController: UIViewController, Logger {
     @IBOutlet private var countDownLabel: UILabel!
     @IBOutlet private var timePicker: UIDatePicker!
+    @IBOutlet private var startButton: TimerButton!
+
     private var task: Task?
+    private var remainingIntervals: TimeInterval = 0
 
     weak var coordinator: AppCoordinator!
     var scheduler: TaskScheduler!
@@ -25,10 +28,14 @@ class TimerViewController: UIViewController, Logger {
         if let task = scheduler.tasks.filter({ $0.type == .countdown }).first {
             self.task = task
             if task.timestamp > Date().timeIntervalSince1970 {
+                startButton.isSelected = true
                 scheduler.execute(task)
-                countingDown(target: task.timestamp - Date().timeIntervalSince1970)
+                remainingIntervals = task.timestamp - Date().timeIntervalSince1970
+                countingDown()
             } else {
                 scheduler.terminate(task)
+                timer.stop()
+                resetUI()
             }
         }
     }
@@ -36,40 +43,49 @@ class TimerViewController: UIViewController, Logger {
     deinit {
         log("deinit \(String(describing: self))")
         timer.stop()
+        task = nil
     }
 
     @IBAction private func stopTapped(_ sender: UIButton) {
         resetUI()
         timer.stop()
+        remainingIntervals = 0
         if let task = task {
             scheduler.terminate(task)
         }
     }
 
     @IBAction private func startTapped(_ sender: UIButton) {
-        let timestamp = Date().timeIntervalSince1970 + timePicker.countDownDuration
-        let date = Date(timeIntervalSince1970: timestamp)
-        let task = RealTask(.countdown, title: "Timer", subtitle: "Countdown", date: date)
-        self.task = task
-        scheduler.execute(task)
-        countingDown(target: timePicker.countDownDuration)
+        if sender.isSelected && task != nil {
+            timer.stop()
+            scheduler.terminate(task!)
+        } else {
+            remainingIntervals = (remainingIntervals == 0) ? timePicker.countDownDuration : remainingIntervals
+            let timestamp = Date().timeIntervalSince1970 + remainingIntervals
+            let date = Date(timeIntervalSince1970: timestamp)
+            let task = RealTask(.countdown, title: "Countdown", subtitle: timePicker.countDownDuration.text(), date: date)
+            self.task = task
+            scheduler.execute(task)
+            countingDown()
+        }
+
+        sender.isSelected.toggle()
     }
 
-    private func countingDown(target: TimeInterval) {
-        var target = target
-
-        countDownLabel.text = target.text()
+    private func countingDown() {
+        countDownLabel.text = remainingIntervals.text()
         countDownLabel.isHidden = false
 
-        timer?.start()
-        timer?.onTick(action: { [weak self] _ in
-            if target > 0 {
-                target -= 1
-                self?.countDownLabel.text = target.text()
-            } else if let task = self?.task {
-                self?.resetUI()
-                self?.timer.stop()
-                self?.scheduler.terminate(task)
+        timer.start()
+        timer.onTick(action: { [unowned self] _ in
+            if remainingIntervals > 0 {
+                remainingIntervals -= 1
+                countDownLabel.text = remainingIntervals.text()
+            } else if let t = task {
+                resetUI()
+                timer.stop()
+                scheduler.terminate(t)
+                task = nil
             }
         })
     }
@@ -77,5 +93,6 @@ class TimerViewController: UIViewController, Logger {
     private func resetUI() {
         countDownLabel.text = nil
         countDownLabel.isHidden = true
+        startButton.isSelected = false
     }
 }
