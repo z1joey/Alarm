@@ -30,3 +30,21 @@ extension TimeInterval {
         return formatter.string(from: TimeInterval(self))!
     }
 }
+
+extension Int {
+    /// Convert number to weekday description, if it is not valid weekday number, then return "Once"
+    /// - Returns: e.g. "Monday", "Sunday"
+    func weekdayName() -> String {
+        switch self {
+        case 1: return "Monday"
+        case 2: return "Tuesday"
+        case 3: return "Wednesday"
+        case 4: return "Thursday"
+        case 5: return "Friday"
+        case 6: return "Saturday"
+        case 7: return "Sunday"
+        default:
+            return "Once"
+        }
+    }
+}

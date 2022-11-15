@@ -19,7 +19,6 @@ class AlarmViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Do any additional setup after loading the view.
         assert(scheduler != nil && coordinator != nil)
     }
@@ -31,7 +30,7 @@ class AlarmViewController: UIViewController {
     }
 
     @IBAction private func editTapped(_ sender: UIBarButtonItem) {
-        tableView.isEditing = true
+        tableView.isEditing.toggle()
     }
 
     @IBAction private func addTapped(_ sender: UIBarButtonItem) {
@@ -47,6 +46,14 @@ extension AlarmViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: AlarmTableViewCell = tableView.dequeueReusableCell(at: indexPath)
         cell.setCell(alarm: alarms[indexPath.row])
+        cell.switchToogled = { [unowned self] isOn in
+            let scheduler = scheduler as? RealTaskScheduler
+            if isOn {
+                scheduler?.enableNotification(alarms[indexPath.row])
+            } else {
+                scheduler?.disableNotification(alarms[indexPath.row])
+            }
+        }
 
         return cell
     }
@@ -54,7 +61,7 @@ extension AlarmViewController: UITableViewDataSource {
 
 extension AlarmViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 88.0
+        return 100.0
     }
 
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {

@@ -38,7 +38,7 @@ class TimerViewController: UIViewController, Logger {
         timer.stop()
     }
 
-    @IBAction private func stopTapped(_ sender: Any) {
+    @IBAction private func stopTapped(_ sender: UIButton) {
         resetUI()
         timer.stop()
         if let task = task {

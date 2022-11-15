@@ -33,6 +33,20 @@ class RealTaskScheduler: TaskScheduler, Logger {
         notificationService.disableNotification(task: task)
         log("terminated: \(task)")
     }
+
+    func disableNotification(_ task: Task) {
+        notificationService.disableNotification(task: task)
+        var temp = task
+        temp.isEnabled = false
+        addTask(temp)
+    }
+
+    func enableNotification(_ task: Task) {
+        notificationService.enableNotification(task: task)
+        var temp = task
+        temp.isEnabled = true
+        addTask(temp)
+    }
 }
 
 private extension RealTaskScheduler {

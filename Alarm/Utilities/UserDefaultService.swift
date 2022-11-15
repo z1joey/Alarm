@@ -28,6 +28,9 @@ class UserDefaultService<T: Codable & Hashable>: Logger {
     func add(item: T, forKey key: String) {
         do {
             var items = items(forKey: key)
+            if items.contains(item) {
+                items.remove(item)
+            }
             items.insert(item)
 
             let encoder = JSONEncoder()

@@ -14,6 +14,7 @@ protocol Task {
     var subtitle: String { get set }
     var timestamp: TimeInterval { get set }
     var isEnabled: Bool { get set }
+    var weekDays: Set<Int> { get set }
 }
 
 enum TaskType: Codable, Hashable {

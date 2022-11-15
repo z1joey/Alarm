@@ -22,11 +22,7 @@ class AddAlarmViewController: UIViewController, Logger {
 
         // Do any additional setup after loading the view.
         assert(scheduler != nil && coordinator != nil)
-    }
-
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
+        timePicker.date = Calendar.current.date(byAdding: .minute, value: 5, to: Date()) ?? Date()
     }
 
     deinit {
@@ -37,19 +33,7 @@ class AddAlarmViewController: UIViewController, Logger {
         coordinator.showRepetitionVC { [weak self] days in
             let joinedString = Array(days)
                 .sorted()
-                .compactMap{ day in
-                    switch day {
-                    case 1: return "Monday"
-                    case 2: return "Tuesday"
-                    case 3: return "Wednesday"
-                    case 4: return "Thursday"
-                    case 5: return "Friday"
-                    case 6: return "Saturday"
-                    case 7: return "Sunday"
-                    default:
-                        return nil
-                    }
-                }
+                .map { $0.weekdayName() }
                 .joined(separator: " ")
 
             self?.days = days
@@ -65,7 +49,8 @@ class AddAlarmViewController: UIViewController, Logger {
         let title = (titleTextField.text == nil || titleTextField.text == "") ? "Alarm" : titleTextField.text!
         let (h, m, s) = timePicker.date.getHMS()
         let date = Date(timeIntervalSince1970: timePicker.date.timeIntervalSince1970 - Double(s))
-        let task = RealTask(.alarm, title: title, subtitle: "\(h):\(m)", date: date, onDays: days)
+
+        let task = RealTask(.alarm, title: title, subtitle: "\(h):\(m)", date: date, weekDays: days)
 
         scheduler.execute(task)
         coordinator.pop()
