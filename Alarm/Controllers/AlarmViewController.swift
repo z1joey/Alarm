@@ -13,8 +13,8 @@ class AlarmViewController: UIViewController {
     weak var coordinator : AppCoordinator!
     var scheduler: TaskScheduler!
 
-    private var alarms: [AlarmTask] {
-        return scheduler.tasks.compactMap { $0 as? AlarmTask }
+    private var alarms: [RealTask] {
+        return scheduler.tasks.compactMap { $0 as? RealTask }
     }
 
     override func viewDidLoad() {

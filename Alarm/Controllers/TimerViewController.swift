@@ -12,36 +12,53 @@ class TimerViewController: UIViewController, Logger {
     @IBOutlet private var timePicker: UIDatePicker!
 
     weak var coordinator: AppCoordinator!
-
-    private var task: TimerTask?
+    var scheduler: TaskScheduler!
+    var timer: TaskTimer!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        assert(coordinator != nil)
+        assert(scheduler != nil && coordinator != nil)
     }
 
     deinit {
         log("deinit \(String(describing: self))")
-        task?.terminate()
+        timer.stop()
     }
 
     @IBAction private func stopTapped(_ sender: Any) {
+        countDownLabel.text = nil
         countDownLabel.isHidden = true
-        task?.terminate()
-        task = nil
+        timer.stop()
     }
 
     @IBAction private func startTapped(_ sender: UIButton) {
-        countDownLabel.text = nil
+        executeTask()
+        countingDown()
+    }
+}
+
+private extension TimerViewController {
+    func executeTask() {
+        let timestamp = Date().timeIntervalSince1970 + timePicker.countDownDuration
+        let date = Date(timeIntervalSince1970: timestamp)
+        let task = RealTask(title: "Countdown", date: date)
+        scheduler.execute(task)
+    }
+
+    func countingDown() {
+        var target = timePicker.countDownDuration
+
+        countDownLabel.text = target.text()
         countDownLabel.isHidden = false
 
-//        let target = Date().timeIntervalSince1970 + timePicker.countDownDuration
-        task = TimerTask(timer: RealTaskTimer(), target: timePicker.countDownDuration)
-        task?.execute()
-        task?.countdown { [weak self] intervals in
-            self?.countDownLabel.text = intervals.text()
-        }
+        timer?.start()
+        timer?.onTick(action: { [weak self] _ in
+            if target > 0 {
+                target -= 1
+                self?.countDownLabel.text = target.text()
+            }
+        })
     }
 }

@@ -8,9 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		D40A2F822921D95600E81130 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = D40A2F812921D95600E81130 /* Task.swift */; };
-		D40A2F892921DA4B00E81130 /* AlarmTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = D40A2F882921DA4B00E81130 /* AlarmTask.swift */; };
-		D40A2F8B2921DA5F00E81130 /* TimerTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = D40A2F8A2921DA5F00E81130 /* TimerTask.swift */; };
-		D40A2F8D2921DDF400E81130 /* AlarmTaskScheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = D40A2F8C2921DDF400E81130 /* AlarmTaskScheduler.swift */; };
+		D40A2F892921DA4B00E81130 /* RealTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = D40A2F882921DA4B00E81130 /* RealTask.swift */; };
+		D40A2F8D2921DDF400E81130 /* RealTaskScheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = D40A2F8C2921DDF400E81130 /* RealTaskScheduler.swift */; };
 		D40A2F922921E6E200E81130 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D40A2F912921E6E200E81130 /* Coordinator.swift */; };
 		D40A2F952921E73800E81130 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D40A2F942921E73800E81130 /* AppCoordinator.swift */; };
 		D40A2F982921E8FE00E81130 /* Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D40A2F972921E8FE00E81130 /* Reusable.swift */; };
@@ -23,8 +22,8 @@
 		D436321F2922A56D00E51711 /* Date+.swift in Sources */ = {isa = PBXBuildFile; fileRef = D436321E2922A56D00E51711 /* Date+.swift */; };
 		D43632212923371800E51711 /* TaskTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D43632202923371800E51711 /* TaskTimer.swift */; };
 		D4363223292337F800E51711 /* RealTaskTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4363222292337F800E51711 /* RealTaskTimer.swift */; };
-		D43632252923788F00E51711 /* NotificationEnabled.swift in Sources */ = {isa = PBXBuildFile; fileRef = D43632242923788F00E51711 /* NotificationEnabled.swift */; };
 		D4363227292381F400E51711 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4363226292381F400E51711 /* Logger.swift */; };
+		D43632292923A6BB00E51711 /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D43632282923A6BB00E51711 /* NotificationService.swift */; };
 		D4E66B072921C6FE00DF86BB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4E66B062921C6FE00DF86BB /* AppDelegate.swift */; };
 		D4E66B0E2921C6FE00DF86BB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D4E66B0C2921C6FE00DF86BB /* Main.storyboard */; };
 		D4E66B102921C70000DF86BB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D4E66B0F2921C70000DF86BB /* Assets.xcassets */; };
@@ -55,9 +54,8 @@
 
 /* Begin PBXFileReference section */
 		D40A2F812921D95600E81130 /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
-		D40A2F882921DA4B00E81130 /* AlarmTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmTask.swift; sourceTree = "<group>"; };
-		D40A2F8A2921DA5F00E81130 /* TimerTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerTask.swift; sourceTree = "<group>"; };
-		D40A2F8C2921DDF400E81130 /* AlarmTaskScheduler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmTaskScheduler.swift; sourceTree = "<group>"; };
+		D40A2F882921DA4B00E81130 /* RealTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealTask.swift; sourceTree = "<group>"; };
+		D40A2F8C2921DDF400E81130 /* RealTaskScheduler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealTaskScheduler.swift; sourceTree = "<group>"; };
 		D40A2F912921E6E200E81130 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		D40A2F942921E73800E81130 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		D40A2F972921E8FE00E81130 /* Reusable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reusable.swift; sourceTree = "<group>"; };
@@ -70,8 +68,8 @@
 		D436321E2922A56D00E51711 /* Date+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+.swift"; sourceTree = "<group>"; };
 		D43632202923371800E51711 /* TaskTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskTimer.swift; sourceTree = "<group>"; };
 		D4363222292337F800E51711 /* RealTaskTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealTaskTimer.swift; sourceTree = "<group>"; };
-		D43632242923788F00E51711 /* NotificationEnabled.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationEnabled.swift; sourceTree = "<group>"; };
 		D4363226292381F400E51711 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
+		D43632282923A6BB00E51711 /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
 		D4E66B032921C6FE00DF86BB /* Alarm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Alarm.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4E66B062921C6FE00DF86BB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D4E66B0D2921C6FE00DF86BB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -119,7 +117,6 @@
 				D43632202923371800E51711 /* TaskTimer.swift */,
 				D40A2FA02921FAB000E81130 /* TaskScheduler.swift */,
 				D40A2F912921E6E200E81130 /* Coordinator.swift */,
-				D43632242923788F00E51711 /* NotificationEnabled.swift */,
 				D4363226292381F400E51711 /* Logger.swift */,
 			);
 			path = Protocols;
@@ -128,10 +125,10 @@
 		D40A2F872921DA2000E81130 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
-				D40A2F8C2921DDF400E81130 /* AlarmTaskScheduler.swift */,
+				D43632282923A6BB00E51711 /* NotificationService.swift */,
+				D40A2F8C2921DDF400E81130 /* RealTaskScheduler.swift */,
 				D4363222292337F800E51711 /* RealTaskTimer.swift */,
-				D40A2F882921DA4B00E81130 /* AlarmTask.swift */,
-				D40A2F8A2921DA5F00E81130 /* TimerTask.swift */,
+				D40A2F882921DA4B00E81130 /* RealTask.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -369,17 +366,16 @@
 				D4E66B392921C84800DF86BB /* AlarmViewController.swift in Sources */,
 				D436321F2922A56D00E51711 /* Date+.swift in Sources */,
 				D40A2F9B2921EDB500E81130 /* AlarmTableViewCell.swift in Sources */,
-				D40A2F892921DA4B00E81130 /* AlarmTask.swift in Sources */,
+				D40A2F892921DA4B00E81130 /* RealTask.swift in Sources */,
 				D40A2F952921E73800E81130 /* AppCoordinator.swift in Sources */,
 				D4E66B072921C6FE00DF86BB /* AppDelegate.swift in Sources */,
 				D40A2F982921E8FE00E81130 /* Reusable.swift in Sources */,
 				D40A2FA82922082E00E81130 /* AddAlarmViewController.swift in Sources */,
 				D43632212923371800E51711 /* TaskTimer.swift in Sources */,
 				D4363223292337F800E51711 /* RealTaskTimer.swift in Sources */,
-				D40A2F8D2921DDF400E81130 /* AlarmTaskScheduler.swift in Sources */,
+				D40A2F8D2921DDF400E81130 /* RealTaskScheduler.swift in Sources */,
+				D43632292923A6BB00E51711 /* NotificationService.swift in Sources */,
 				D40A2F822921D95600E81130 /* Task.swift in Sources */,
-				D40A2F8B2921DA5F00E81130 /* TimerTask.swift in Sources */,
-				D43632252923788F00E51711 /* NotificationEnabled.swift in Sources */,
 				D421667829226BC80092E497 /* RepetitionViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

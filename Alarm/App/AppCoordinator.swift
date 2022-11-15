@@ -70,6 +70,8 @@ private extension AppCoordinator {
         let timerVC: TimerViewController = storyboard.instantiateViewController()
         timerVC.tabBarItem = timerItem
         timerVC.coordinator = self
+        timerVC.scheduler = scheduler
+        timerVC.timer = RealTaskTimer()
 
         tab.viewControllers = [nav, timerVC]
     }

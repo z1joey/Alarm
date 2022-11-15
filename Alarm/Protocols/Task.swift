@@ -7,7 +7,10 @@
 
 import Foundation
 
-protocol Task {    
-    func execute()
-    func terminate()
+protocol Task {
+    var id: String { get set }
+    var title: String { get set }
+    var subtitle: String { get set }
+    var timestamp: TimeInterval { get set }
+    var isEnabled: Bool { get set }
 }

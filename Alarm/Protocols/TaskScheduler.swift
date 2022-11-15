@@ -10,6 +10,6 @@ import Foundation
 protocol TaskScheduler {
     var tasks: [Task] { get }
 
-    func dispatch(_ task: Task)
+    func execute(_ task: Task)
     func terminate(_ task: Task)
 }

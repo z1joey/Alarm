@@ -10,7 +10,7 @@ import Foundation
 extension Date {
     /// Get hours and minutes from a date
     /// - Returns: (Hours: Minutes: Seconds)
-    func getTime() -> (Int, Int, Int) {
+    func getHMS() -> (Int, Int, Int) {
         let calendar = Calendar.current
         let hour = calendar.component(.hour, from: self)
         let minutes = calendar.component(.minute, from: self)
@@ -20,7 +20,7 @@ extension Date {
     }
 }
 
-extension Int {
+extension TimeInterval {
     /// Convert second intervals into readable format
     func text(_ style: DateComponentsFormatter.UnitsStyle = .positional) -> String {
         let formatter = DateComponentsFormatter()

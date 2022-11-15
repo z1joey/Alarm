@@ -12,8 +12,9 @@ class AlarmTableViewCell: UITableViewCell {
     @IBOutlet private var titleLabel: UILabel!
     @IBOutlet private var alarmSwitch: UISwitch!
 
-    func setCell(alarm: AlarmTask) {
-        timeLabel.text = "\(alarm.time.0) : \(alarm.time.1)"
+    func setCell(alarm: RealTask) {
+        let (h, m, _) = Date(timeIntervalSince1970: alarm.timestamp).getHMS()
+        timeLabel.text = "\(h) : \(m)"
         titleLabel.text = alarm.title
     }
 }
