@@ -29,6 +29,10 @@ class AddAlarmViewController: UIViewController {
         
     }
 
+    deinit {
+        print("deinit \(String(describing: self))")
+    }
+
     @IBAction private func repetitionTapped(_ sender: UIButton) {
         coordinator.showRepetitionVC { [weak self] days in
             let joinedString = Array(days)

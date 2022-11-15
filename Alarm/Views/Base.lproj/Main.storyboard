@@ -124,7 +124,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fwV-dO-4Jv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="628" y="-89"/>
+            <point key="canvasLocation" x="644" y="-89"/>
         </scene>
         <!--Repetition View Controller-->
         <scene sceneID="zGl-Cz-Oit">
@@ -311,14 +311,95 @@
                     <view key="view" contentMode="scaleToFill" id="mO4-oB-NSr">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="60" translatesAutoresizingMaskIntoConstraints="NO" id="4pz-ua-Qsm">
+                                <rect key="frame" x="20" y="167.66666666666663" width="353" height="342"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="V1E-bk-qvT">
+                                        <rect key="frame" x="0.0" y="0.0" width="353" height="216"/>
+                                        <subviews>
+                                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="countDownTimer" minuteInterval="1" useCurrentDate="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7CI-Ms-677">
+                                                <rect key="frame" x="0.0" y="0.0" width="353" height="216"/>
+                                            </datePicker>
+                                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xHe-K8-iXN">
+                                                <rect key="frame" x="0.0" y="0.0" width="353" height="216"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="60"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="7CI-Ms-677" secondAttribute="trailing" id="8Hh-de-g7w"/>
+                                            <constraint firstItem="7CI-Ms-677" firstAttribute="leading" secondItem="V1E-bk-qvT" secondAttribute="leading" id="AMU-LO-jcG"/>
+                                            <constraint firstAttribute="trailing" secondItem="xHe-K8-iXN" secondAttribute="trailing" id="Jcr-HC-JIZ"/>
+                                            <constraint firstItem="7CI-Ms-677" firstAttribute="top" secondItem="V1E-bk-qvT" secondAttribute="top" id="LR0-cj-hTJ"/>
+                                            <constraint firstItem="xHe-K8-iXN" firstAttribute="leading" secondItem="V1E-bk-qvT" secondAttribute="leading" id="UHG-8t-YwI"/>
+                                            <constraint firstAttribute="bottom" secondItem="xHe-K8-iXN" secondAttribute="bottom" id="VpD-Tw-Q5J"/>
+                                            <constraint firstAttribute="bottom" secondItem="7CI-Ms-677" secondAttribute="bottom" id="g2q-cF-KAZ"/>
+                                            <constraint firstItem="xHe-K8-iXN" firstAttribute="top" secondItem="V1E-bk-qvT" secondAttribute="top" id="iOx-NU-EqJ"/>
+                                        </constraints>
+                                    </view>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="1Sb-rB-356">
+                                        <rect key="frame" x="0.0" y="276" width="353" height="66"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nMk-Q9-ehE">
+                                                <rect key="frame" x="0.0" y="0.0" width="66" height="66"/>
+                                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="nMk-Q9-ehE" secondAttribute="height" id="Ake-hx-oFh"/>
+                                                </constraints>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain" title="Stop">
+                                                    <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </buttonConfiguration>
+                                                <connections>
+                                                    <action selector="stopTapped:" destination="YWr-Z7-dZ2" eventType="touchUpInside" id="Txv-09-kJJ"/>
+                                                </connections>
+                                            </button>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7IR-tT-l7P">
+                                                <rect key="frame" x="76" y="0.0" width="201" height="66"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                            </view>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H7n-hA-wAX">
+                                                <rect key="frame" x="287" y="0.0" width="66" height="66"/>
+                                                <color key="backgroundColor" systemColor="systemMintColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="H7n-hA-wAX" secondAttribute="height" multiplier="1:1" id="AJn-UJ-dY0"/>
+                                                    <constraint firstAttribute="height" constant="66" id="YaL-SE-uGF"/>
+                                                </constraints>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain" title="Start">
+                                                    <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </buttonConfiguration>
+                                                <connections>
+                                                    <action selector="startTapped:" destination="YWr-Z7-dZ2" eventType="touchUpInside" id="gt1-yl-nj0"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="Hqz-sj-c5g"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="4pz-ua-Qsm" firstAttribute="centerX" secondItem="Hqz-sj-c5g" secondAttribute="centerX" id="8VY-sP-fyp"/>
+                            <constraint firstItem="4pz-ua-Qsm" firstAttribute="leading" secondItem="mO4-oB-NSr" secondAttribute="leading" constant="20" id="YTa-wn-bdy"/>
+                            <constraint firstItem="4pz-ua-Qsm" firstAttribute="centerY" secondItem="Hqz-sj-c5g" secondAttribute="centerY" constant="-100" id="hpJ-ca-7Sq"/>
+                            <constraint firstItem="Hqz-sj-c5g" firstAttribute="trailing" secondItem="4pz-ua-Qsm" secondAttribute="trailing" constant="20" id="ma3-cJ-xSn"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Timer" id="B2T-4g-b6s"/>
+                    <connections>
+                        <outlet property="countDownLabel" destination="xHe-K8-iXN" id="fHy-S7-h83"/>
+                        <outlet property="timePicker" destination="7CI-Ms-677" id="zi9-ZX-SDI"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0VY-uO-McF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-364" y="648"/>
+            <point key="canvasLocation" x="-364.12213740458014" y="650.70422535211276"/>
         </scene>
         <!--Alarm-->
         <scene sceneID="gcI-UG-08l">
@@ -446,6 +527,9 @@
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemMintColor">
+            <color red="0.0" green="0.7803921568627451" blue="0.74509803921568629" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

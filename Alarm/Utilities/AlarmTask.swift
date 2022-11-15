@@ -21,6 +21,10 @@ class AlarmTask: Task {
         self.days = days
     }
 
+    deinit {
+        print("deinit \(String(describing: self))")
+    }
+
     /// In which day should the service work, if returns empty then do not repeat
     /// - Returns: 1-7: Monday-Sunday
     func repetition() -> Set<Int> {

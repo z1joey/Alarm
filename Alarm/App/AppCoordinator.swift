@@ -62,14 +62,13 @@ class AppCoordinator: Coordinator {
 
 private extension AppCoordinator {
     func setupTabBar() {
-        let alarmItem = UITabBarItem(title: "Alarm", image: nil, tag: 0)
-        let timerItem = UITabBarItem(title: "Timer", image: nil, tag: 1)
+        let alarmItem = UITabBarItem(title: "Alarm", image: UIImage(systemName: "alarm"), tag: 0)
+        let timerItem = UITabBarItem(title: "Timer", image: UIImage(systemName: "timer"), tag: 1)
 
         nav.tabBarItem = alarmItem
 
         let timerVC: TimerViewController = storyboard.instantiateViewController()
         timerVC.tabBarItem = timerItem
-        timerVC.scheduler = scheduler
         timerVC.coordinator = self
 
         tab.viewControllers = [nav, timerVC]

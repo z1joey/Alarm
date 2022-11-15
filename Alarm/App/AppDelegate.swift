@@ -25,7 +25,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             tab: tabBar,
             nav: navBar,
             storyboard: UIStoryboard(name: "Main", bundle: .main),
-            scheduler: RealTaskScheduler()
+            scheduler: AlarmTaskScheduler()
         )
         coordinator?.start()
 

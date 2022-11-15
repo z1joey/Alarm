@@ -18,3 +18,14 @@ extension Date {
         return (hour, minutes)
     }
 }
+
+extension Int {
+    /// Convert second intervals into readable format
+    func text(_ style: DateComponentsFormatter.UnitsStyle = .positional) -> String {
+        let formatter = DateComponentsFormatter()
+        formatter.allowedUnits = [.hour, .minute, .second]
+        formatter.unitsStyle = style
+
+        return formatter.string(from: TimeInterval(self))!
+    }
+}

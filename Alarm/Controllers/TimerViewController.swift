@@ -8,13 +8,40 @@
 import UIKit
 
 class TimerViewController: UIViewController {
-    weak var coordinator : AppCoordinator!
-    var scheduler: TaskScheduler!
+    @IBOutlet private var countDownLabel: UILabel!
+    @IBOutlet private var timePicker: UIDatePicker!
+
+    weak var coordinator: AppCoordinator!
+
+    private var task: TimerTask?
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        assert(scheduler != nil && coordinator != nil)
+        assert(coordinator != nil)
+    }
+
+    deinit {
+        print("deinit \(String(describing: self))")
+        task?.terminate()
+    }
+
+    @IBAction private func stopTapped(_ sender: Any) {
+        countDownLabel.isHidden = true
+        task?.terminate()
+        task = nil
+    }
+
+    @IBAction private func startTapped(_ sender: UIButton) {
+        countDownLabel.text = nil
+        countDownLabel.isHidden = false
+
+        let target = Date().timeIntervalSince1970 + timePicker.countDownDuration
+        task = TimerTask(timer: RealTaskTimer(), target: target)
+        task?.execute()
+        task?.countdown { [weak self] intervals in
+            self?.countDownLabel.text = intervals.text()
+        }
     }
 }

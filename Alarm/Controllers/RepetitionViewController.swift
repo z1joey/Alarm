@@ -29,6 +29,10 @@ class RepetitionViewController: UITableViewController {
         navigationController?.setNavigationBarHidden(true, animated: false)
         onDays?(days)
     }
+
+    deinit {
+        print("deinit \(String(describing: self))")
+    }
 }
 
 extension RepetitionViewController {
