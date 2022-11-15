@@ -65,7 +65,7 @@ class AddAlarmViewController: UIViewController, Logger {
         let title = (titleTextField.text == nil || titleTextField.text == "") ? "Alarm" : titleTextField.text!
         let (h, m, s) = timePicker.date.getHMS()
         let date = Date(timeIntervalSince1970: timePicker.date.timeIntervalSince1970 - Double(s))
-        let task = RealTask(title: title, subtitle: "\(h):\(m)", date: date, onDays: days)
+        let task = RealTask(.alarm, title: title, subtitle: "\(h):\(m)", date: date, onDays: days)
 
         scheduler.execute(task)
         coordinator.pop()

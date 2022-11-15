@@ -25,18 +25,20 @@ class NotificationService: Logger {
         let request = UNNotificationRequest(identifier: task.id, content: content, trigger: trigger)
 
         let center = UNUserNotificationCenter.current()
+        log("requested a local notification for \(task)")
         center.add(request)
     }
 
     func disableNotification(task: Task) {
         let center = UNUserNotificationCenter.current()
 
-        center.getPendingNotificationRequests { (requests) in
-          for request in requests {
-              if request.identifier == task.id {
-              center.removePendingNotificationRequests(withIdentifiers: [task.id])
+        center.getPendingNotificationRequests { [weak self] (requests) in
+            for request in requests {
+                if request.identifier == task.id {
+                    center.removePendingNotificationRequests(withIdentifiers: [task.id])
+                    self?.log("removed a local notification for \(task)")
+                }
             }
-          }
         }
     }
 }

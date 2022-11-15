@@ -23,34 +23,34 @@ class RealTaskScheduler: TaskScheduler, Logger {
     }
 
     func execute(_ task: Task) {
-        if let task = task as? RealTask {
-            addTask(task)
-        }
+        addTask(task)
         notificationService.enableNotification(task: task)
         log("executed: \(task)")
     }
 
     func terminate(_ task: Task) {
-        if let task = task as? RealTask {
-            removeTask(task)
-        }
+        removeTask(task)
         notificationService.disableNotification(task: task)
         log("terminated: \(task)")
     }
 }
 
 private extension RealTaskScheduler {
-    func addTask(_ task: RealTask) {
-        NSLock().lock()
-        _tasks.insert(task)
-        userDefaultService.add(item: task, forKey: "tasks")
-        NSLock().unlock()
+    func addTask(_ task: Task) {
+        if let task = task as? RealTask {
+            NSLock().lock()
+            _tasks.insert(task)
+            userDefaultService.add(item: task, forKey: "tasks")
+            NSLock().unlock()
+        }
     }
 
-    func removeTask(_ task: RealTask) {
-        NSLock().lock()
-        _tasks.remove(task)
-        userDefaultService.remove(item: task, forKey: "tasks")
-        NSLock().unlock()
+    func removeTask(_ task: Task) {
+        if let task = task as? RealTask {
+            NSLock().lock()
+            _tasks.remove(task)
+            userDefaultService.remove(item: task, forKey: "tasks")
+            NSLock().unlock()
+        }
     }
 }
