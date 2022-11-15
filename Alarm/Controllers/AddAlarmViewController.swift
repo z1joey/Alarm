@@ -14,8 +14,8 @@ class AddAlarmViewController: UIViewController {
 
     private var days: Set<Int> = []
 
-    weak var coordinator : AlarmCoordinator!
-    var scheduler: ServiceScheduler!
+    weak var coordinator : AppCoordinator!
+    var scheduler: TaskScheduler!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,8 +31,7 @@ class AddAlarmViewController: UIViewController {
 
     @IBAction private func repetitionTapped(_ sender: UIButton) {
         coordinator.showRepetitionVC { [weak self] days in
-            self?.days = days
-            self?.daysLabel.text = Array(days)
+            let joinedString = Array(days)
                 .sorted()
                 .compactMap{ day in
                     switch day {
@@ -44,10 +43,13 @@ class AddAlarmViewController: UIViewController {
                     case 6: return "Saturday"
                     case 7: return "Sunday"
                     default:
-                        return "Once"
+                        return nil
                     }
                 }
                 .joined(separator: " ")
+
+            self?.days = days
+            self?.daysLabel.text = days.isEmpty ? "Once" : joinedString
         }
     }
 
@@ -58,8 +60,8 @@ class AddAlarmViewController: UIViewController {
     @IBAction private func saveTapped(_ sender: UIBarButtonItem) {
         let title = (titleTextField.text == nil || titleTextField.text == "") ? "Alarm" : titleTextField.text!
 
-        scheduler.registerService(
-            AlarmService(
+        scheduler.dispatch(
+            AlarmTask(
                 title: title,
                 time: timePicker.date.getTime(),
                 onDays: days

@@ -9,39 +9,69 @@ import Foundation
 import UIKit
 
 class AppCoordinator: Coordinator {
-    private var root: UITabBarController
-    private var scheduler: ServiceScheduler
-    private let main = UIStoryboard(name: "Main", bundle: nil)
+    private let tab: UITabBarController
+    private let nav: UINavigationController
+    private let storyboard: UIStoryboard
+
+    private var scheduler: TaskScheduler
 
     var parent: Coordinator?
     var children: [Coordinator]
 
-    init(root: UITabBarController, scheduler: ServiceScheduler) {
-        self.root = root
+    init(tab: UITabBarController, nav: UINavigationController, storyboard: UIStoryboard, scheduler: TaskScheduler) {
+        self.tab = tab
+        self.nav = nav
         self.parent = nil
         self.children = []
         self.scheduler = scheduler
+        self.storyboard = storyboard
+
+        setupTabBar()
     }
 
     func start() {
+        showAlarmVC()
+    }
+
+    func showAlarmVC() {
+        let alarmVC: AlarmViewController = storyboard.instantiateViewController()
+        alarmVC.scheduler = scheduler
+        alarmVC.coordinator = self
+        nav.pushViewController(alarmVC, animated: true)
+    }
+
+    func showAddAlarmVC() {
+        let vc: AddAlarmViewController = storyboard.instantiateViewController()
+        vc.coordinator = self
+        vc.scheduler = scheduler
+        nav.pushViewController(vc, animated: true)
+    }
+
+    func showRepetitionVC(_ completion: ((Set<Int>) -> Void)?) {
+        let vc: RepetitionViewController = storyboard.instantiateViewController()
+        vc.coordinator = self
+        vc.scheduler = scheduler
+        vc.onDays = completion
+        nav.pushViewController(vc, animated: true)
+    }
+
+    func pop() {
+        nav.popViewController(animated: true)
+    }
+}
+
+private extension AppCoordinator {
+    func setupTabBar() {
         let alarmItem = UITabBarItem(title: "Alarm", image: nil, tag: 0)
         let timerItem = UITabBarItem(title: "Timer", image: nil, tag: 1)
 
-        let main = UIStoryboard(name: "Main", bundle: nil)
-        let alarmNav = UINavigationController()
-        alarmNav.setNavigationBarHidden(true, animated: false) // uses custom nav bar
-        alarmNav.tabBarItem = alarmItem
+        nav.tabBarItem = alarmItem
 
-        let alarmCoordinator = AlarmCoordinator(nav: alarmNav, scheduler: scheduler)
-        alarmCoordinator.start()
-        alarmCoordinator.parent = self
-        children.append(alarmCoordinator)
-
-        let timerVC: TimerViewController = main.instantiateViewController()
+        let timerVC: TimerViewController = storyboard.instantiateViewController()
         timerVC.tabBarItem = timerItem
         timerVC.scheduler = scheduler
         timerVC.coordinator = self
 
-        root.viewControllers = [alarmNav, timerVC]
+        tab.viewControllers = [nav, timerVC]
     }
 }

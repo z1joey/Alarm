@@ -8,8 +8,8 @@
 import UIKit
 
 class RepetitionViewController: UITableViewController {
-    weak var coordinator : AlarmCoordinator!
-    var scheduler: ServiceScheduler!
+    weak var coordinator : AppCoordinator!
+    var scheduler: TaskScheduler!
 
     private var days: Set<Int> = []
     var onDays: ((Set<Int>) -> Void)?

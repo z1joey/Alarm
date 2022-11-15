@@ -10,12 +10,11 @@ import UIKit
 class AlarmViewController: UIViewController {
     @IBOutlet private var tableView: UITableView!
 
-    weak var coordinator : AlarmCoordinator!
-    var scheduler: ServiceScheduler!
+    weak var coordinator : AppCoordinator!
+    var scheduler: TaskScheduler!
 
-    private var alarms: [AlarmService] {
-        let services = scheduler.services.filter { $0 is AlarmService }
-        return services.compactMap { $0 as? AlarmService }
+    private var alarms: [AlarmTask] {
+        return scheduler.tasks.compactMap { $0 as? AlarmTask }
     }
 
     override func viewDidLoad() {

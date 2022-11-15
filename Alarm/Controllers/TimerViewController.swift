@@ -9,7 +9,7 @@ import UIKit
 
 class TimerViewController: UIViewController {
     weak var coordinator : AppCoordinator!
-    var scheduler: ServiceScheduler!
+    var scheduler: TaskScheduler!
 
     override func viewDidLoad() {
         super.viewDidLoad()

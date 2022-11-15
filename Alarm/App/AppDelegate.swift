@@ -16,15 +16,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         requestNotificationAuthorization()
 
         window = UIWindow(frame: UIScreen.main.bounds)
+        
+        let tabBar = TabBarController()
+        let navBar = UINavigationController()
+        navBar.setNavigationBarHidden(true, animated: false) // uses custom nav bar
 
-        let serviceTimer = RealServiceTimer()
-        let schduler = RealServiceScheduler(timer: serviceTimer)
-
-        let tabBarController = TabBarController()
-        coordinator = AppCoordinator(root: tabBarController, scheduler: schduler)
+        coordinator = AppCoordinator(
+            tab: tabBar,
+            nav: navBar,
+            storyboard: UIStoryboard(name: "Main", bundle: .main),
+            scheduler: RealTaskScheduler()
+        )
         coordinator?.start()
 
-        window?.rootViewController = tabBarController
+        window?.rootViewController = tabBar
         window?.makeKeyAndVisible()
 
         return true
