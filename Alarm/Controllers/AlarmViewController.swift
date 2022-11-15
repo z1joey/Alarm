@@ -26,11 +26,12 @@ class AlarmViewController: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-
+        tableView.isEditing = false
         tableView.reloadSections(IndexSet(integer: 0), with: .automatic)
     }
 
     @IBAction private func editTapped(_ sender: UIBarButtonItem) {
+        tableView.isEditing = true
     }
 
     @IBAction private func addTapped(_ sender: UIBarButtonItem) {
@@ -54,5 +55,12 @@ extension AlarmViewController: UITableViewDataSource {
 extension AlarmViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 88.0
+    }
+
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            scheduler.terminate(alarms[indexPath.row])
+            tableView.reloadSections(IndexSet(integer: 0), with: .automatic)
+        }
     }
 }
