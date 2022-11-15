@@ -7,7 +7,7 @@
 
 import UIKit
 
-class TimerViewController: UIViewController {
+class TimerViewController: UIViewController, Logger {
     @IBOutlet private var countDownLabel: UILabel!
     @IBOutlet private var timePicker: UIDatePicker!
 
@@ -23,7 +23,7 @@ class TimerViewController: UIViewController {
     }
 
     deinit {
-        print("deinit \(String(describing: self))")
+        log("deinit \(String(describing: self))")
         task?.terminate()
     }
 
@@ -37,8 +37,8 @@ class TimerViewController: UIViewController {
         countDownLabel.text = nil
         countDownLabel.isHidden = false
 
-        let target = Date().timeIntervalSince1970 + timePicker.countDownDuration
-        task = TimerTask(timer: RealTaskTimer(), target: target)
+//        let target = Date().timeIntervalSince1970 + timePicker.countDownDuration
+        task = TimerTask(timer: RealTaskTimer(), target: timePicker.countDownDuration)
         task?.execute()
         task?.countdown { [weak self] intervals in
             self?.countDownLabel.text = intervals.text()

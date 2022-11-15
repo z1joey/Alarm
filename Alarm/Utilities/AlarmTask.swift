@@ -7,22 +7,29 @@
 
 import Foundation
 
-class AlarmTask: Task {
-    private let id: String
+class AlarmTask: Task, NotificationEnabled, Logger {
+    var id: String
+    var title: String
+    var subtitle: String
+    var intervals: TimeInterval
+    var isEnabled: Bool
+
     private var days: Set<Int> = []
 
-    let title: String
     let time: (Int, Int) //hh: mm
 
-    init(title: String, time: (Int, Int), onDays days: Set<Int>) {
+    init(title: String, date: Date, onDays days: Set<Int>) {
         self.id = UUID().uuidString
         self.title = title
-        self.time = time
+        self.subtitle = "Alarm"
+        self.intervals = date.timeIntervalSince1970 - Date().timeIntervalSince1970
         self.days = days
+        self.time = date.getTime()
+        self.isEnabled = false
     }
 
     deinit {
-        print("deinit \(String(describing: self))")
+        log("deinit \(String(describing: self))")
     }
 
     /// In which day should the service work, if returns empty then do not repeat
@@ -32,10 +39,14 @@ class AlarmTask: Task {
     }
 
     func execute() {
-        print("calendar: \(time)")
+        enableNotification()
+        isEnabled = true
+        log("An alarm is enabled with intervals: \(intervals)s")
     }
 
     func terminate() {
-        print("terminate")
+        disableNotification()
+        isEnabled = false
+        log("An alarm with id(\(id)) is disabled")
     }
 }

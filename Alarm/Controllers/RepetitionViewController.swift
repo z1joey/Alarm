@@ -7,7 +7,7 @@
 
 import UIKit
 
-class RepetitionViewController: UITableViewController {
+class RepetitionViewController: UITableViewController, Logger {
     weak var coordinator : AppCoordinator!
     var scheduler: TaskScheduler!
 
@@ -31,7 +31,7 @@ class RepetitionViewController: UITableViewController {
     }
 
     deinit {
-        print("deinit \(String(describing: self))")
+        log("deinit \(String(describing: self))")
     }
 }
 

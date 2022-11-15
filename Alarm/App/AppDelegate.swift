@@ -36,13 +36,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 }
 
-private func requestNotificationAuthorization() {
-    let center = UNUserNotificationCenter.current()
-    center.requestAuthorization(options: [.alert, .badge, .sound]) { granted, _ in
-        if granted {
-            print("granted")
-        } else {
-            print("dennied")
+extension AppDelegate: Logger {
+    func requestNotificationAuthorization() {
+        let center = UNUserNotificationCenter.current()
+        center.requestAuthorization(options: [.alert, .badge, .sound]) { [weak self] granted, _ in
+            if granted {
+                self?.log("User has granted notification permission")
+            } else {
+                self?.log("User has dennied notification permission")
+            }
         }
     }
 }

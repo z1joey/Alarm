@@ -7,7 +7,7 @@
 
 import Foundation
 
-class RealTaskTimer: TaskTimer {
+class RealTaskTimer: TaskTimer, Logger {
     private var timer: Timer?
     private var tick: Int
     private var tickAction: ((Int) -> ())?
@@ -19,7 +19,7 @@ class RealTaskTimer: TaskTimer {
     }
 
     deinit {
-        print("deinit \(String(describing: self))")
+        log("deinit \(String(describing: self))")
     }
 
     func start() {

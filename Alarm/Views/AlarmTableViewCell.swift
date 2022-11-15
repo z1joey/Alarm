@@ -13,7 +13,7 @@ class AlarmTableViewCell: UITableViewCell {
     @IBOutlet private var alarmSwitch: UISwitch!
 
     func setCell(alarm: AlarmTask) {
-        titleLabel.text = alarm.title
         timeLabel.text = "\(alarm.time.0) : \(alarm.time.1)"
+        titleLabel.text = alarm.title
     }
 }

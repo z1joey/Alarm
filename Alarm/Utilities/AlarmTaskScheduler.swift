@@ -21,13 +21,8 @@ class AlarmTaskScheduler: TaskScheduler {
     }
 
     func terminate(_ task: Task) {
-        print("terminate")
         NSLock().lock()
         _tasks.append(task)
         NSLock().unlock()
-    }
-    
-    deinit {
-        print("deinit \(String(describing: self))")
-    }
+    }    
 }

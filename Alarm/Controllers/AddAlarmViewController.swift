@@ -7,7 +7,7 @@
 
 import UIKit
 
-class AddAlarmViewController: UIViewController {
+class AddAlarmViewController: UIViewController, Logger {
     @IBOutlet private var daysLabel: UILabel!
     @IBOutlet private var timePicker: UIDatePicker!
     @IBOutlet private var titleTextField: UITextField!
@@ -30,7 +30,7 @@ class AddAlarmViewController: UIViewController {
     }
 
     deinit {
-        print("deinit \(String(describing: self))")
+        log("deinit \(String(describing: self))")
     }
 
     @IBAction private func repetitionTapped(_ sender: UIButton) {
@@ -63,14 +63,10 @@ class AddAlarmViewController: UIViewController {
 
     @IBAction private func saveTapped(_ sender: UIBarButtonItem) {
         let title = (titleTextField.text == nil || titleTextField.text == "") ? "Alarm" : titleTextField.text!
+        let task = AlarmTask(title: title, date: timePicker.date, onDays: days)
+        task.execute()
 
-        scheduler.dispatch(
-            AlarmTask(
-                title: title,
-                time: timePicker.date.getTime(),
-                onDays: days
-            )
-        )
+        scheduler.dispatch(task)
         coordinator.pop()
     }
 }
