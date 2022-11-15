@@ -21,11 +21,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let navBar = UINavigationController()
         navBar.setNavigationBarHidden(true, animated: false) // uses custom nav bar
 
+        let userDefaultService = UserDefaultService<RealTask>()
+        let tasks = userDefaultService.items(forKey: "tasks")
+
         coordinator = AppCoordinator(
             tab: tabBar,
             nav: navBar,
             storyboard: UIStoryboard(name: "Main", bundle: .main),
-            scheduler: RealTaskScheduler(notificationService: NotificationService())
+            scheduler: RealTaskScheduler(
+                tasks: tasks,
+                notificationService: NotificationService(),
+                userDefaultService: userDefaultService
+            )
         )
         coordinator?.start()
 

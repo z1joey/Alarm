@@ -43,7 +43,7 @@ private extension TimerViewController {
     func executeTask() {
         let timestamp = Date().timeIntervalSince1970 + timePicker.countDownDuration
         let date = Date(timeIntervalSince1970: timestamp)
-        let task = RealTask(title: "Countdown", date: date)
+        let task = RealTask(title: "Timer", subtitle: "Countdown", date: date)
         scheduler.execute(task)
     }
 

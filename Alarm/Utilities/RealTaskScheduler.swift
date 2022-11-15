@@ -8,31 +8,49 @@
 import Foundation
 
 class RealTaskScheduler: TaskScheduler, Logger {
-    private var _tasks: [Task]
+    private var _tasks: Set<RealTask>
     private var notificationService: NotificationService
+    private var userDefaultService: UserDefaultService<RealTask>
 
-    init(notificationService: NotificationService) {
-        self._tasks = []
+    init(tasks: Set<RealTask>, notificationService: NotificationService, userDefaultService: UserDefaultService<RealTask>) {
+        self._tasks = tasks
         self.notificationService = notificationService
+        self.userDefaultService = userDefaultService
     }
 
     var tasks: [Task] {
-        return _tasks
+        return Array(_tasks)
     }
 
     func execute(_ task: Task) {
-        NSLock().lock()
-        _tasks.append(task)
+        if let task = task as? RealTask {
+            addTask(task)
+        }
         notificationService.enableNotification(task: task)
-        log("\(task) executed")
-        NSLock().unlock()
+        log("executed: \(task)")
     }
 
     func terminate(_ task: Task) {
-        NSLock().lock()
-        _tasks.append(task)
+        if let task = task as? RealTask {
+            removeTask(task)
+        }
         notificationService.disableNotification(task: task)
-        log("\(task) terminated")
+        log("terminated: \(task)")
+    }
+}
+
+private extension RealTaskScheduler {
+    func addTask(_ task: RealTask) {
+        NSLock().lock()
+        _tasks.insert(task)
+        userDefaultService.add(item: task, forKey: "tasks")
         NSLock().unlock()
-    }    
+    }
+
+    func removeTask(_ task: RealTask) {
+        NSLock().lock()
+        _tasks.remove(task)
+        userDefaultService.remove(item: task, forKey: "tasks")
+        NSLock().unlock()
+    }
 }
