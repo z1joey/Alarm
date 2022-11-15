@@ -9,13 +9,14 @@ import Foundation
 
 extension Date {
     /// Get hours and minutes from a date
-    /// - Returns: (Hours: Minutes)
-    func getTime() -> (Int, Int) {
+    /// - Returns: (Hours: Minutes: Seconds)
+    func getTime() -> (Int, Int, Int) {
         let calendar = Calendar.current
         let hour = calendar.component(.hour, from: self)
         let minutes = calendar.component(.minute, from: self)
+        let seconds = calendar.component(.second, from: self)
 
-        return (hour, minutes)
+        return (hour, minutes, seconds)
     }
 }
 

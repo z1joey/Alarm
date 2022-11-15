@@ -63,7 +63,9 @@ class AddAlarmViewController: UIViewController, Logger {
 
     @IBAction private func saveTapped(_ sender: UIBarButtonItem) {
         let title = (titleTextField.text == nil || titleTextField.text == "") ? "Alarm" : titleTextField.text!
-        let task = AlarmTask(title: title, date: timePicker.date, onDays: days)
+        let (_, _, seconds) = timePicker.date.getTime()
+        let date = Date(timeIntervalSince1970: timePicker.date.timeIntervalSince1970 - Double(seconds))
+        let task = AlarmTask(title: title, date: date, onDays: days)
         task.execute()
 
         scheduler.dispatch(task)

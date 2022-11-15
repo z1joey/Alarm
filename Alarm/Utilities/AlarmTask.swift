@@ -16,7 +16,7 @@ class AlarmTask: Task, NotificationEnabled, Logger {
 
     private var days: Set<Int> = []
 
-    let time: (Int, Int) //hh: mm
+    let time: (Int, Int, Int) //hh: mm: ss
 
     init(title: String, date: Date, onDays days: Set<Int>) {
         self.id = UUID().uuidString
